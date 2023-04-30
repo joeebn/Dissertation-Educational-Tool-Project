@@ -1,13 +1,4 @@
- // Firebase configuration. This is copy and pasted form the firebase terminal and is not self-written code, 
- //Credit to Firebase.
- const firebaseConfig = {
-    apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
-    authDomain: "cloud-a535b.firebaseapp.com",
-    projectId: "cloud-a535b",
-    storageBucket: "cloud-a535b.appspot.com",
-    messagingSenderId: "215864555524",
-    appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
-  };
+
 
  // Initialize Firebase, again taken from the firebase website to setup the intialisation of the database to be used in javascript.
  firebase.initializeApp(firebaseConfig);
