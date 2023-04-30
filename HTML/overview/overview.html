@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="overview.html"> Overview</a></li>
+    <br>
+    <li><a href="applications.html"> Where AI is used</a></li>
+    <br>
+    <li><a href="../Quizzes/overview_quiz.html"> Quiz</a></li>
+    <br>
+</ul>
+</div>
+
+<!--Here is the content for this section of the educational tool. -->
+<div id="content">
+  <h1> Welcome to the first section</h1>
+  <h2> This section gives a bit more of an overview to AI</h2>
+
+  <p> Artificial Intelligence, AI is the study of using machines, or computers, to perform tasks similar to that of human intelligence.</p>
+  <br>
+  <p> AI has been thought about since computers have been in existence. Computers <i>learning</i> from data and information is what we consider to be AI </p>
+  <br>
+  <p>There are many different ways that computers can <i>learn</i>new information. The first is trial and error. 
+  Britanica (2023) give an example of this. In a chess game, a computer may complete random moves until it finds the best one. 
+Overtime, these moves are learnt and stored by the machine to use when needed. This is machine learning. </p>
+<img src="machinelearning.png" height="250" width ="400">
+<br>
+<p>There are other ways that machines learn that have been developed. These are reinforced learning, supervised learning and unsupervised learning</p>
+
+<h3><u>Supervised Learning</u></h3>
+<p>This is when data is trained under supervision, that is to say that when data is used to train the model, the data is already <i>labelled</i>
+meaning it is already know what a correct answer is.</p>
+
+<p>To give an example of this, if house data were being used and we knew the price that each house sold for as well as the size, location and features, we could use this model on other properties to get a valaution.</p>
+<p>Another example can be found in image classification. If a model was designed to tell the difference between motorbikes and pushbikes, we could label our data with correct examples and see if the model can disguinish between the two. </p>
+
+<h3><u>Unsupervised Learning</u></h3>
+<p>If supervised learning shows how models can be trained when the data is labelled, then unsupervised is when this is not the case.
+  When using unsupervised learning, the computer model is trying to find trends and patterns in the data. An example of this kind of learning is the recommendation systems that are found in Netflix, Spotify and other streaming services.</p>
+
+</p> What happens here is that the algorithm searches through the data it collects on you and thousands and millions of other. It looks at what you like,
+the shows you watch and other attributes about you. From this, it recommends media to stream.</p>
+
+<img  src="netflix.jpg" height="300" width="500">
+<br>
+<br>
+<h4><u>Big Data</u></h4>
+
+<p>This is another term associated with AI. Essentially, this is a vast amount of data that is collected and processed for a specific reason. In many cases, big data is used in the training of AI models 
+
+</p>
+
+<h3><u>Reinforced Learning</u></h3>
+<p>This is when a model is rewarded for achieving its goals and punished for not. Obviously, this is essentially telling a computer 
+  if it has achieved the required output or not. Imagine a computer playing a game. If computer does well at the game, it learns the 
+  best way to play it. If the game does not do well, it needs to retrain until it does. In a nutshell this is reinforced learning and eventually
+  you will have a computer that can play this game much better than any human.
+</p>
+
+
+
+
+<h3><u>Weak and Strong AI </u></h3>
+<p>There are two other terms that I want you to know. The first is weak AI. This is when AI is developed for one purpose. Take Chess, computers 
+  can out-perform humans at this game, and many other games, but cannot perform any other intelligible functions.
+</p>
+
+<p> In out society we see many forms of weak AI, some more sophisticated than others. Driverless cars, whilst very powerful machines,
+  are still examples of weak AI</p>
+
+
+
+<p>Then we have strong AI. I'm sure you have guessed what this is. If weak AI serves a single purpose, strong AI is the opposite. 
+  Strong AI is when artificial intelligence matches human intelligence in terms of creativity, solving problems and any other cognitive functions
+  that make humans unique.
+</p>
+
+<p>Some claim that if AI were to fully become <b>strong</b> then our civilisation will be completely different. You need only look to Hollywood 
+films for doomsday examples of AI taking over. However, others claim that it will improve our lives and will not be that extreme.</p>
+<p>
+  Have a think about what direct you think strong AI will lead our society down!
+</p>
+<hr>
+
+<p>Want to know more? Head to the <a href= "applications.html"> <i>Where AI is used</i></a> section to learn more.
+Or take the quiz on the left hand side. Remember, once you have taken the quiz you can see your feedback in the results section.</p>

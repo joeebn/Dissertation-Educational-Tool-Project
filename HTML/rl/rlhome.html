@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!--THis is the navigation for the left side of the webpage.-->
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="rlhome.html"> Overview</a></li>
+    <br>
+    <li><a href="rlexamples.html"> Examples of Reinforced Learning</a></li>
+    <br>
+    <li><a href="../Quizzes/rl_quiz.html"> Quiz</a></li>
+    <br>
+</ul>
+</div>
+
+<!--Here is the content for this section of the educational tool.It features written information. Images, videos, and links to 
+different articles.-->
+<div id="content">
+  <h1> Home of Reinforced Learning</h1>
+
+<p>Reinforced Learning is the final type of machine learning that we will look at. Reinforced learning is a trial and error approach.
+  That is to say that a program is trained on data and then put into action, if the algorithm does not complete the task it is trained to do, 
+  then it learns and tries a different approach. This is continued until the algorithm performs the task required in that environment.
+
+</p>
+
+<p>In a reinforced learning algorithm the agent, which is the term used to describe the algorithm, rewards good behaviours and punishes 
+  negative behaviours. In simple terms, if the algorithm gets it right, then the program learns that and uses it again. If the program gets it
+wrong, then that behaviour is discarded. </p>
+
+<p>Gaming provides a better example of this. Nowadays, we can program reinforced learning algorithms to complete games with ease. To start with, 
+  the algorithm moves at random around the environment, in this case, a game. The program will make mistakes and some positive moves. It is applying
+  trial and error to find the optimum solution to the problem. As computers do not need to rest or take breaks, this process can continue until 
+  the algorithm can successful thrive in the environment it has been programmed to work in. 
+</p>
+<p>Here is an example of reinforced learning algorithm</p>
+<img src="rl.png" height="500" width="700">
+<blockquote>This diagram shows how reinforced learning works. This image is from <a href="https://techvidvan.com/tutorials/reinforcement-learning/">Tech Vidvan</a></blockquote>
+<br>
+<p>So, over time, the agent looks for positive behaviours and not for negative bevaviours. It learns from the environment it is in which allows
+  it to perform tasks. Over time, these can be very powerful at performing different tasks. 
+</p>
+
+<p>Watch this video for some better perspective on reinforced learning</p>
+
+<iframe width="700" height="500" src="https://www.youtube.com/embed/2xATEwcRpy8" title="Reinforcement Learning Basics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

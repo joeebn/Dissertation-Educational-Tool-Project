@@ -1,0 +1,108 @@
+<!--Setup of the quiz. It includes the general setup of the quiz. It features a link to an online 
+stylesheet that is used on all quizzes to provide a consistent house style.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Unsupervised Learning Quiz</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+
+</style>
+
+
+</head>
+
+<!--This code uses javascript to set the local storage of the quiz number. This is then used in the database and retrieval to 
+know which quiz has been completed. It sets the value of the quiz depending of the quiz number. -->
+
+<body onload = "getquiz()">
+<script>
+	function getquiz(){
+		localStorage.setItem('quiz', 3);
+	}
+</script>
+
+
+
+
+<!--Here are the questions to the quiz and the given and correct answers. -->
+
+<h1>Unsupervised Learning Quiz</h1>
+<form id="questions">
+
+<h2>What is unsupervised learning?</h2>
+<input type="radio" name="q1" value="0" id="q1_a1">A type of learning where the machine is provided with labeled data <br>
+<input type="radio" name="q1" value="1" id="q1_a2" />A type of learning where the machine is not provided with labeled data<br>
+<input type="radio" name="q1" value="0" id="q1_a3" />A type of learning that only uses reinforcement feedback<br>
+<input type="radio" name="q1" value="0" id="q1_a4"/> A type of learning that is only applicable to deep neural networks<br>
+
+<h2>What is clustering in unsupervised learning?</h2>
+<input type="radio" name="q2" value="1" id="q2_a1"/>The process of dividing data into groups based on their similarity<br>
+<input type="radio" name="q2" value="0" id="q2_a2"/>The process of dividing data into groups based on their differences<br>
+<input type="radio" name="q2" value="0" id="q2_a3" />The process of assigning labels to data points<br>
+<input type="radio" name="q2" value="0" id="q2_a4" />The process of predicting the outcome of a new data point<br>
+
+<h2>What is anomaly detection in unsupervised learning?</h2>
+<input type="radio" name="q3" value="1" id="q3_a1"/>The process of identifying data points that are different from the rest<br>
+<input type="radio" name="q3" value="0" id="q3_a2"/>The process of identifying data points that are similar to the rest<br>
+<input type="radio" name="q3" value="0" id="q3_a3" />The process of assigning labels to data points<br>
+<input type="radio" name="q3" value="0" id="q3_a4" />The process of predicting the outcome of a new data point<br>
+
+<h2>Which of the following is a challenge of using unsupervised learning techniques?</h2>
+<input type="radio" name="q4" value="0" id="q4_a1"/>Difficulty in labeling large amounts of data<br>
+<input type="radio" name="q4" value="0" id="q4_a2"/>Limited availability of training data<br>
+<input type="radio" name="q4" value="0" id="q4_a3" />The need for domain-specific knowledge<br>
+<input type="radio" name="q4" value="1" id="q4_a4" />All of the above<br>
+
+
+<h2>What are some real-world applications of unsupervised learning?</h2>
+<input type="radio" name="q5" value="1" id="q5_a1"/>Fraud detection<br>
+<input type="radio" name="q5" value="0" id="q5_a2"/>Market segmentation<br>
+<input type="radio" name="q5" value="0" id="q5_a3" />Image classification<br>
+<input type="radio" name="q5" value="1" id="q5_a4" />All of the above<br>
+
+<h2>What is the main difference between anomaly detection and outlier detection?</h2>
+<input type="radio" name="q6" value="0" id="q6_a1"/>Anomaly detection is supervised while outlier detection is unsupervised<br>
+<input type="radio" name="q6" value="1" id="q6_a2"/>Anomaly detection and outlier detection are the same thing<br>
+<input type="radio" name="q6" value="0" id="q6_a3" />Anomaly detection and outlier detection both use labeled data<br>
+<input type="radio" name="q6" value="0" id="q6_a4" />Anomaly detection is unsupervised while outlier detection is supervised<br>
+
+<h2>Which type of unsupervised learning algorithm is used for sequence data, such as text or speech?</h2>
+<input type="radio" name="q7" value="1" id="q7_a1"/>Clustering<br>
+<input type="radio" name="q7" value="0" id="q7_a2"/>Dimensionality reduction<br>
+<input type="radio" name="q7" value="0" id="q7_a3" />Autoencoders<br>
+<input type="radio" name="q7" value="0" id="q7_a4" />Random Forest<br>
+
+<h2>Which best describes Association in unsupervised learning.</h2>
+<input type="radio" name="q8" value="0" id="q8_a1"/>Ordering data in order<br>
+<input type="radio" name="q8" value="1" id="q8_a2"/> Noticing patterns in data to use in things like marketing<br>
+<input type="radio" name="q8" value="0" id="q8_a3" />Classifying data into different categories<br>
+<input type="radio" name="q8" value="0" id="q8_a4" />Adding labels to data<br>
+
+<button type="submit" value="Submit" id="submit">Submit</button>
+
+</form>
+
+
+<!--This will show the grade and feedback of the quiz. This is done in the app.js file
+Help for this section cam from https://codeactually.com/interactivequiz.html
+Credit to Code Actually-->
+
+<p>Your grade is: <span id="grade">__</span></p>
+<p id ="feedback"> </p>
+
+
+
+<!--This is the javascript link the the firestore database, to save the outcome of the quiz and a link to the app.js file that 
+stores the code needed to save the quiz data to the firestore database. -->
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src ="app.js"></script> 
+
+<!--Navigation to the homescreen. -->
+<h4> <a href="../website.html">Return Home</a></h4>
+
+</div>
+</body>
+</html>

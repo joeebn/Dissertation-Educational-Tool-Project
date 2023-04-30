@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--Here is the left side navigation of this page. -->
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="ethicshome.html"> Ethics of AI</a></li>
+    <br>
+    <li><a href="../Quizzes/ethics_quiz.html"> Quiz</a></li>
+    <br>
+   
+</ul>
+</div>
+
+<!--Here is the content for this section of the educational tool.It features written information, Images, and links to 
+different articles.-->
+<div id="content">
+  <h1> Ethics of AI</h1>
+  <p>Ethics of AI is complicated and ever changing world. There is no doubt that ethics of AI are a very important consideration for anyone 
+    using or developing AI applications. We live in a world where legislation is often behind technology. So ensuring that AI systems
+    are built responsibly is paramount to our society.
+  </p>
+
+  <p>There are many definitions of what <i>AI ethics is.</i> And it is a fair assessment to make that today's issues may be minor when
+  considering what tomorrow's AI can bring. </p>
+
+  <p>If you research online for AI ethics principles you will find many different examples, some with 4, some with 5 main principles.
+    For this educational tool we will look at the following:
+  <ol>
+    <li>Transparency</li>
+    <li>Impartiality</li>
+    <li>Accountability</li>
+    <li>Reliability</li>
+    <li>Security & Privacy</li>
+  </ol>
+  </p>
+
+  <h3>Transparency</h3>
+  <p>This first section refers to how the AI systems are used by companies, organisations and governments. As AI becomes more 
+    integral to way we work, we should know how these AI systems operate and how they provide the service that they do.
+    For example, we should know if an AI system has used our data to provide its service. Moreover, we should be able to remove our data from their models.
+    This is laid out in the Data Protection Act. Also, if an AI system is being used to profile us, how do we ensure that it is not biased?
+
+  </p>
+  
+  <h3>Impartiality</h3>
+  <p>AI has the ability to change the world we live in but if not designed properly then issues can arise.
+    Impartiality refers to AI being impartial when in use. For example, it should not take physical attributes of person into account, or their
+    race, religion, sexual orientation. This is a deeper issue, however the people who design a lot of software are generally males, and generally white.
+    How do we ensure that no unconscious bias is embedded into our AI systems?
+  </p>
+
+  <!--Table that shows the charts of software engineers.-->
+  <table >
+    <tr>
+      <td><strong><u>Genders of Software Engineers</u></strong></td>
+      <td><strong><u>Ethnicity's of Software Engineers</u></strong></td>
+    </tr>
+		<tr>
+			<td> <img src="genders.png" height = 200 width=450 > </td>
+			<td> <img src="demographics.png" height = 200 width="500"></td>
+		
+		</tr>
+    </table>
+    <p>Demographics of software engineers according to <a href="https://www.zippia.com/software-engineer-jobs/demographics/">Zippia</a></p>
+</table>
+
+
+<h3>Accountability</h3>
+<p>This is where who is responsible for an AI system is defined. Whilst we some things, like chatbots, that may not be life threatening, but if self-driving cars 
+  become a feature of our society, then the onus is who to control this?
+  </p>
+  <p>Essentially, we should have a clear hierarchy of responsibility for AI systems. Whether it is the designers and developers or the organisations that use them. 
+    There must also be a level of government accountability for this as well. 
+  </p>
+
+
+  <h3>Reliability </h3>
+  <p>We need to ensure, like with any software, that AI systems are robust. We cannot afford for some safety-critical applications to fail. Because it has the ability 
+    to cause danger to lives, for example, self-driving cars. So when AI systems are developed, they should be robust and thoroughly tested to ensure that there are no 
+    issues. We also need to ensure that when issues do arise, which is inevitable when it comes to a digital system, that the accountability takes over. 
+  </p>
+
+  <h3>Security & Privacy</h3>
+  <p>We have to right to be protected and the right to privacy. So ensuring that AI systems follow these rules is critical. 
+    We already have legislation to protect our digital data, Data Protection Act, and we have legislation to protect out privacy, Human Rights Act. 
+    As mentioned previously, legislation often falls behind technology as technology develops at a quicker rate. We need to ensure that when developing and 
+    using AI system that peoples security and their privacy are not used as collateral for a <i>good AI system.</i>  
+  </p>

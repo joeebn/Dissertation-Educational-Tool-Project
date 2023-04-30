@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="overview.html"> Overview</a></li>
+    <br>
+    <li><a href="applications.html"> Where AI is used</a></li>
+    <br>
+    <li><a href="../Quizzes/overview_quiz.html"> Quiz</a></li>
+    <br>
+</ul>
+
+<!--Here is the content for this section of the educational tool.It features written information. Images, videos, and links to 
+different articles.-->
+</div>
+<div id="content">
+  <h1> Applications of AI</h1>
+  <p> AI is fast becoming a technology that is used in so many different sectors.
+  Industries are adopting AI as it can be more powerful than humans and can perform tasks in
+  a more efficient and much quicker time.</p>
+<br>
+<p> Here we will look at how AI is changing just a few industries and why.</p>
+<br>
+<h3> Creative Industries</h3>
+<p> The creative industries includes many different forms of media, from film to music.</p>
+<p> We see AI being utilised in films for many years. Albeit in a primitive way in the past. 
+But now with technology like Deepfakes, any actor can appear on smartphone, and the big 
+screen as well. Watch this video to find out more.</p>
+<iframe width="600" height="400" src="https://www.youtube.com/embed/gLoI9hAX9dw" title="It’s Getting Harder to Spot a Deep Fake Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<br>
+<p> There are other aspects of the creative world that are utilising AI, such as image generation</p>
+
+<p> AI image generation is a new phenomenon whereby users can type into a search bar and an 
+image matching that criteria is generated. 
+<table >
+		<tr>
+			<td> <img src="search.png" height = 100 width=450 > </td>
+			<td> <img src="arrow.png" height = 100></td>
+			<td><img src="results.png"> </td>
+		</tr>
+</table>
+<p> Here you can see and example of an image generated from AI using the DALL-E 2 platform. 
+You can try this for yourself at <a href="https://openai.com/product/dall-e-2"> DALL-E 2</p></a>
+<br>
+<p> There are many other ways that AI is used in the creative industries. Why not try looking into some examples online.</p>
+<br>
+<h3> E-Commerce </h3>
+<p> There are many examples of where AI is ued in E-Commerce. First we can see recommendations 
+for different products and services based on a users preferences. Here is an example of 
+how a recommendation system works. 
+<br>
+<img src = "recommendation.png">
+<center><blockquote> Ferreira et al.(2020) </blockquote></center>
+<p> In this image you can see how based on a users' preferences they are given recommendations
+on what to buy, listen to, watch and many different areas of e-commerce. </p>
+<br>
+<p> Another way that e-commerce is affected by AI is through the use of Chatbots. Chatbots
+are becoming a very popular way of interfacing with users. They are seen on a lot of e-commerce 
+websites because they can handle basic responses, and now, maybe some more complex ones. 
+It's interesting to think about how far chatbots will go! </p>
+<br>
+<p> Watch this video on the raise of one of the most popular Chatbots on the market currently,<a href="https://openai.com/blog/chatgpt"> Chat GPT</a></p>
+<iframe width="600" height="400" src="https://www.youtube.com/embed/AtY6auzszDU" title="How did an AI chatbot go viral? - BBC News" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<br>
+<br>
+<h3>Healthcare</h3>
+<p>Healthcare is the final industry we will look at in this section. AI is now being used as part of the
+diagnosis process for different medical issues. AI has the ability to look through images and find 
+potential cancers or be given different symptoms and feed this back to a doctor. We also see big
+data used in drug trials to see if a drug is successful or not. </p>
+<br>
+<img src="cancer.png">
+<blockquote> CA A Cancer J Clin, 69: i-i. https://doi.org/10.3322/caac.21471 (2019)</blockquote>
+<br>
+<p>Here you can see an image showing how AI is used to detect brain tumors. The model is given
+examples that is learns from to give a potential prognosis. </p>
+
+
+<hr>
+<h6> References</h6>
+<ul>
+<li><p>Ferreira, D.; Silva, S.; Abelha, A.; Machado, J. Recommendation System Using Autoencoders. Appl. Sci. 2020, 10, 5510. https://doi.org/10.3390/app10165510</p></li>
+<li><p> CA A Cancer J Clin, 69: i-i. https://doi.org/10.3322/caac.21471 (2019)</p></li>
+</ul>

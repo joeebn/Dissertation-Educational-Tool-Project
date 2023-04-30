@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="ulhome.html"> Overview</a></li>
+    <br>
+    <li><a href="ulexamples.html"> Examples of Unsupervised Learning</a></li>
+    <br>
+    <li><a href="../Quizzes/ul_quiz.html"> Quiz</a></li>
+    <br>
+</ul>
+</div>
+
+<!--Here is the content for this section of the educational tool.It features written information. Images, videos, and links to 
+different articles.-->
+<div id="content">
+  <h1> Home of Unsupervised Learning</h1>
+  <p>Unsupervised learning is when data is trained but it does not have any labels. So, if you think about a picture of different elements, like fruits.
+    In the image there many be many different fruits; apples, bananas, etc. If supervised learning was to be used, we would tell our 
+  model what each of these items are, like the colour and size. In unsupervised learning, we leave it for the algorithm to find the structure of the
+data. </p>
+
+<img src = "ul.png">
+<p>Here is a graphical representation of how unsupervised learning works.</p>
+<p><i>This can be found at https://nixustechnologies.com/unsupervised-machine-learning/</i></p>
+
+
+<p> This has some benefits for us as users of AI. Unsupervised algorithms are certainly more complex, mostly because we do not know what the 
+  trained data will find. This makes it good for finding anomalies in datasets, which in turn can be used to our advantage. For example, 
+unsupervised learning is used in banking fraud detection. If our algorithm in realtime can find an anomaly, in this case banking fraud, then the 
+transaction can be stopped before the crime takes places. There are many other examples of unsupervised learning that will be discussed in the next section. </p>
+
+<p>Take a look at this video to learn more about unsupervised learning</p>
+<iframe width="909" height="511" src="https://www.youtube.com/embed/JnnaDNNb380" title="Unsupervised Learning: Crash Course AI #6" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<br>
+<br>
+<h3>Clustering</h3>
+<p>One of the main applications of unsupervised learning is to cluster the data. This is the method used to detect anomalies in data, like the fraud example given above. 
+  Here you can see that data has been clustered based on certain variables. This is an example of clustering penguins, from this you can see that 
+  the penguins have been clustered.  
+</p>
+<img src="clustering.png" height = 500 width="650">
+
+<h3>Association</h3>
+<p>This is another method of unsupervised learning that is common. In association learning, a model looks for frequencies or patterns. For example,
+  if you watch certain shows and genres on Netflix, then Netflix will recommend similar shows to you. Or if you buy certain products in a shop,
+  then similar products, or products that are also bought with your products are advertised to you. 
+</p>
+<p>Because of this algorithms ability to find the patterns, it is often used in market research, like in supermarkets to advertise products
+  that customers may also want to buy, or it may be used to determine where items should be located in a store for greater returns.
+  It is also used in recommender systems on the likes of Spotify and Netflix. It also has a use in medical diagnosis systems, for example, 
+  if certain symptoms are being displayed, then the algorithm could find the diagnosis. 
+</p>

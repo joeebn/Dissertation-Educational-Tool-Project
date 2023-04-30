@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="ulhome.html"> Overview</a></li>
+    <br>
+    <li><a href="ulexamples.html"> Examples of Unsupervised Learning</a></li>
+    <br>
+    <li><a href="../Quizzes/ul_quiz.html"> Quiz</a></li>
+    <br>
+</ul>
+</div>
+
+<!--Here is the content for this section of the educational tool. It features written information. Images, and links to 
+different articles.-->
+<div id="content">
+  <h1> Examples of Unsupervised learning</h1>
+
+  <p>Like most other AI models, unsupervised learning has many different applications that are currently being used across different industries.</p>
+  
+  <h3> Recommendation Systems</h3>
+  <p>In the previous section we saw that unsupervised learning is used in recommendation systems across streaming platforms. That is to say that the platform finds links
+between viewing habits and what others are watching to give recommendations. A similar principle applies to e-commerce. 
+An unsupervised model can look at what other people bought based on purchasing history, from this, they can recommend different products 
+that might suit the needs of the user.</p>
+
+<h3>Medical Diagnosis</h3>
+<p> We have also seen that medical diagnosis systems use a similar system. A user can input their symptoms, from this and historical data, the 
+  model can give a prognosis. This is in its infancy, however it will be interesting to see how this developes in the future. 
+</p>
+
+<h3>Detection Systems</h3>
+<p>One of the main applications of unsupervised learning is that it can be used to look for outliers and anomalies in datasets. 
+  This has many real-world applications for us as users of AI. First banks can use this to look at fraud. If a model has been trained to 
+  look for anomalies, when a transaction, or series of transactions, breaks this trend, then banks can stop them straight away. 
+  This has the potential to save a lot of money in the long term. 
+</p>
+<p>The same principle can apply to insurance companies. Such as with banks, insurance brokers can use this to analyse trends in 
+  insurance scams and use this to protect themselves and their customers from fraud. 
+</p>
+
+<h3>Marketing</h3>
+<p>Marketing, and having a competitive edge is such a crucial part of business. Businesses utilisiing unsupervised learning are improving
+  their marketing. As mentioned, e-commerce sites can use unsupervised learning to look for trends and advertise based on the purchasing history.
+  This can then be used by companies for many different purposes, whether it's to advertise products online, change the layout of a physical store, 
+  alter prices to suit their customers needs, and many other examples. 
+</p>
+
+<p>As with all AI learning models, there are many applications and much more science behind the models. 
+  If you are interested in more of this, then there are many different websites to learn more.
+  This website is very useful for more information. <a href="https://nixustechnologies.com/unsupervised-machine-learning/">Click Here</a>
+</p>

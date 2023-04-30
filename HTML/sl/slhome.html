@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="slhome.html"> Overview</a></li>
+    <br>
+    <li><a href="slexamples.html"> Examples of Supervised Learning</a></li>
+    <br>
+    <li><a href="../Quizzes/sl_quiz.html"> Quiz</a></li>
+    <br>
+</ul>
+</div>
+
+<!--Here is the content for this section of the educational tool.It features written information. Images, videos, and links to 
+different articles.-->
+<div id="content">
+  <h1> Home of Supervised Learning</h1>
+
+<p>Hopefully you have had the chance to look at the overview and the unsupervised learning sections of the educational tool so far.
+  In this section we will review supervised learning and how it can be used to develop different applications and the industries that these applications 
+  are used in. 
+</p>
+
+<h4>What is Supervised Learning</h4>
+<p>Well if unsupervised learning is when a model is trained without labelling the data, then supervised learning is the opposite. 
+  In this model, we have data that has been labelled, so we know what the data is before it is put into the model. 
+</p>
+
+<p>Here you can see a diagram of the supervised learning model.</p>
+<img src = "diagram.png">
+<blockquote>This is a diagram that shows how a supervised model works. Here you can that the model is trained on labelled data 
+  and then tested with test data. The outcomes are then measured and the model is tweaked if needed. This image is from <a href="https://www.javatpoint.com/supervised-machine-learning">https://www.javatpoint.com/supervised-machine-learning</a> .</blockquote>
+
+  <h4> Classification</h4>
+
+  <p>Classification is one of the key applications of supervised learning. It is used to classify data into a category. From there, a model can then
+    be used to classify something. For example, if you told a model what a cat looked like, and then told the model what a dog looked like, theoretically, 
+    when shown a picture of one of these animals, it can distinguish between the two. 
+  </p>
+  <p>Here is an example of classification tree. This algorithm looks at the labelled data of 3 different penguin species. From this, the algorithm 
+    has classified the penguin based on the body mass, flipper length and culmen size. 
+  </p>
+<img src = "classification.png" height =400 width="500">
+
+<br>
+<br>
+<br>
+  <p>Try this classification tool.</p>
+
+  <p>Here is a model that has been trained to distinguish between background noise and whistling. You can try whistling into the microphone
+    and see how successful it is. You can also see this model here: <a href = "https://teachablemachine.withgoogle.com/models/Mwv-Vdml0/">View Model</a></p>
+    <p>You can make your own model here: <a href="https://teachablemachine.withgoogle.com">Teachable Machine</a>
+  </p>
+  <p>The closer to 1 the value is, the more of that variable it is picking up. Click start to try</p>
+  <button type="button" onclick="init()">Start</button>
+ 
+ 
+ 
+ <!--This is the model for the whistle and background classification feature. This is taken directly form the Teachable Machine 
+(https://teachablemachine.withgoogle.com/) website when a model has been created. So this is not self written code.
+Credit to Teachable Machine.-->
+  <div id="label-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+  
+  <script type="text/javascript">
+
+      const URL = "https://teachablemachine.withgoogle.com/models/Mwv-Vdml0/";
+  
+      async function createModel() {
+          const checkpointURL = URL + "model.json"; 
+          const metadataURL = URL + "metadata.json"; 
+  
+          const recognizer = speechCommands.create(
+              "BROWSER_FFT", 
+              undefined, 
+              checkpointURL,
+              metadataURL);
+  
+   
+          await recognizer.ensureModelLoaded();
+  
+          return recognizer;
+      }
+  
+      async function init() {
+          const recognizer = await createModel();
+          const classLabels = recognizer.wordLabels(); 
+          const labelContainer = document.getElementById("label-container");
+          for (let i = 0; i < classLabels.length; i++) {
+              labelContainer.appendChild(document.createElement("div"));
+          }
+  
+      
+          recognizer.listen(result => {
+              const scores = result.scores; 
+              for (let i = 0; i < classLabels.length; i++) {
+                  const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
+                  labelContainer.childNodes[i].innerHTML = classPrediction;
+              }
+          }, {
+              includeSpectrogram: true, 
+              probabilityThreshold: 0.75,
+              invokeCallbackOnNoiseAndUnknown: true,
+              overlapFactor: 0.50 
+          });
+  
+          
+      }
+  </script>
+  <!--End of Teachable Machine copied code!-->
+
+
+
+  <br>
+  <br>
+
+  <p>Here is another example of classification, here you can draw in a number, and hopefully it will output the correct value.
+    What is happening is that the model is comparing your number to predefined numbers (0-9). This is obviously a very narrow use of supervised 
+    AI, but you can start to see how we can build on this to create more interesting models that fix real-world problems.
+  </p>
+  <p>This was made a simple programming language called Scratch, whilst this is a simple language, you can do many interesting things with it. 
+  Credit to Nishpish for making this model. 
+  </p>
+  
+  <!--This is a scratch iframe that can add scratch projects into the webpage.-->
+  <iframe src="https://scratch.mit.edu/projects/558745023/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+  <p>There are many different classification algorithms that are used such as:
+    <ul>
+      <li>Decision Trees</li>
+      <li>K Nearest Neighbour</li>
+      <li>Neural Networks</li>
+    </ul>
+  </p>
+
+<h4>Regression</h4>
+<p>Regression analysis is another method of supervised learning. In this method, data is used to predict what will happen next. For example,
+  if the weather follows a specific pattern, a supervised model could look at what the weather will be like in the future. It can do this by looking
+  at historical data, such as the time of year, current weather, location, and can make a prediction based on these variables. 
+</p>
+
+<p> Another example of this could be in forecasting wages of an individual based on different variables. The model could then show what their 
+  potential earnings could be. 
+</p>
+<p>Here is an image that shows the classification and regression algorithms in use.</p>
+<img src="supervised.png">
+<blockquote>This image is from <a href="https://www.javatpoint.com/regression-vs-classification-in-machine-learning">https://www.javatpoint.com/regression-vs-classification-in-machine-learning</a></blockquote>
+

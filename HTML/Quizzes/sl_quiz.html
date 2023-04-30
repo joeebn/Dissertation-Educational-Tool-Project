@@ -1,0 +1,107 @@
+<!--Setup of the quiz. It includes the general setup of the quiz. It features a link to an online 
+stylesheet that is used on all quizzes to provide a consistent house style.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Supervised Learning Quiz</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+
+</style>
+
+</head>
+
+<!--This code uses javascript to set the local storage of the quiz number. This is then used in the database and retrieval to 
+know which quiz has been completed. It sets the value of the quiz depending of the quiz number. -->
+
+<body onload = "getquiz()">
+<script>
+	function getquiz(){
+		localStorage.setItem('quiz', 4);
+	}
+</script>
+
+
+
+
+<!--Here are the questions to the quiz and the given and correct answers. -->
+
+<h1>Supervised Learning Quiz</h1>
+<form id="questions">
+
+<h2>What is supervised learning?</h2>
+<input type="radio" name="q1" value="0" id="q1_a1">A type of learning where the machine is not provided with labeled data <br>
+<input type="radio" name="q1" value="1" id="q1_a2" />A type of learning where the machine is provided with labeled data<br>
+<input type="radio" name="q1" value="0" id="q1_a3" />A type of learning that only uses reinforcement feedback<br>
+<input type="radio" name="q1" value="0" id="q1_a4"/>A type of learning that is only applicable to deep neural networks<br>
+
+<h2>What is classification in supervised learning?</h2>
+<input type="radio" name="q2" value="0" id="q2_a1"/>The process of dividing data into groups based on their similarity<br>
+<input type="radio" name="q2" value="0" id="q2_a2"/>The process of predicting a continuous output variable<br>
+<input type="radio" name="q2" value="1" id="q2_a3" />The process of predicting a categorical output variable<br>
+<input type="radio" name="q2" value="0" id="q2_a4" />The process of reducing the number of features in the data<br>
+
+<h2>What is regression in supervised learning?</h2>
+<input type="radio" name="q3" value="0" id="q3_a1"/>The process of dividing data into groups based on their similarity<br>
+<input type="radio" name="q3" value="1" id="q3_a2"/>The process of predicting a continuous output variable<br>
+<input type="radio" name="q3" value="0" id="q3_a3" />The process of predicting a categorical output variable<br>
+<input type="radio" name="q3" value="0" id="q3_a4" />The process of reducing the number of features in the data<br>
+
+<h2>Which of the following is a disadvantage of using decision trees in supervised learning?</h2>
+<input type="radio" name="q4" value="1" id="q4_a1"/>They are prone to overfitting<br>
+<input type="radio" name="q4" value="0" id="q4_a2"/>They can only handle binary classification problems<br>
+<input type="radio" name="q4" value="0" id="q4_a3" />They require a lot of computational power to train<br>
+<input type="radio" name="q4" value="0" id="q4_a4" />They are not suitable for high-dimensional data<br>
+
+
+<h2>Which type of supervised learning algorithm is most suitable for predicting a continuous output variable?</h2>
+<input type="radio" name="q5" value="0" id="q5_a1"/>Classification<br>
+<input type="radio" name="q5" value="1" id="q5_a2"/>Regression<br>
+<input type="radio" name="q5" value="0" id="q5_a3" />Clustering<br>
+<input type="radio" name="q5" value="0" id="q5_a4" />Reinforcement learning<br>
+
+<h2>Which of the following ways can supervised learning be used in cybersecurity?</h2>
+<input type="radio" name="q6" value="0" id="q6_a1"/>CAPTCHA Forms<br>
+<input type="radio" name="q6" value="0" id="q6_a2"/>Spam detection<br>
+<input type="radio" name="q6" value="0" id="q6_a3" />Fraud transactions<br>
+<input type="radio" name="q6" value="1" id="q6_a4" />All of the above<br>
+
+<h2>If supervised learning was to be used to predict a house sale, which variables would be used?</h2>
+<input type="radio" name="q7" value="0" id="q7_a1"/>Historical prices<br>
+<input type="radio" name="q7" value="0" id="q7_a2"/>Location<br>
+<input type="radio" name="q7" value="0" id="q7_a3" />Size of the house<br>
+<input type="radio" name="q7" value="1" id="q7_a4" />All of the above<br>
+
+<h2>Which of the following is an example of a classification problem in supervised learning?</h2>
+<input type="radio" name="q8" value="0" id="q8_a1"/>Predicting the stock price of a company.<br>
+<input type="radio" name="q8" value="0" id="q8_a2"/>Predicting the height of a person based on their weight.<br>
+<input type="radio" name="q8" value="1" id="q8_a3" />Identifying whether an email is spam or not.<br>
+<input type="radio" name="q8" value="0" id="q8_a4" />Identifying the topics discussed in a collection of documents.<br>
+
+<button type="submit" value="Submit" id="submit">Submit</button>
+
+</form>
+
+
+<!--This will show the grade and feedback of the quiz. This is done in the app.js file
+Help for this section cam from https://codeactually.com/interactivequiz.html
+Credit to Code Actually-->
+
+<p>Your grade is: <span id="grade">__</span></p>
+<p id ="feedback"> </p>
+
+
+
+<!--This is the javascript link the the firestore database, to save the outcome of the quiz and a link to the app.js file that 
+stores the code needed to save the quiz data to the firestore database. -->
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src ="app.js"></script> 
+
+<!--Navigation to the homescreen. -->
+<h4> <a href="../website.html">Return Home</a></h4>
+
+</div>
+</body>
+</html>

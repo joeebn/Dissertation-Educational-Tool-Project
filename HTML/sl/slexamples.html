@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--This is the navigation down the side of the webpage. -->
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="slhome.html"> Overview</a></li>
+    <br>
+    <li><a href="slexamples.html"> Examples of Supervised Learning</a></li>
+    <br>
+    <li><a href="../Quizzes/sl_quiz.html"> Quiz</a></li>
+    <br>
+</ul>
+</div>
+
+<!--Here is the content for this section of the educational tool.It features written information.-->
+<div id="content">
+  <h1> Examples of Supervised learning</h1>
+
+  <p>There are many different applications of supervised learning. It is worth looking into how supervised learning is being used, or can be used 
+    in your chosen industry. Here are some examples to show you. 
+  </p>
+<h3>Cybersecurity</h3>
+<p>Cybersecurity is a key part of any computer system nowadays. Protecting digital devices and networks has become big business. AI is also being
+  used in this domain to help combat cybercrime. </p>
+  <p>As we saw in the unsupervised learning sections, that AI is being used for fraud detection, well the same applies here. Classification
+algorithms are being used to analyse if a transaction is fraudulent. </p>
+<p> Another way that supervised learning is being used in cybersecurity is through detecting spam emails. Big email providers, such as Microsoft, 
+  are investing in systems that classify emails into spam and ham emails.
+</p>
+<p>Classification is also used in CAPTCHA forms that are readily seen when logging into different systems. For example, a user is asked, as a layer of security 
+  to select specific objects. With classification algorithms, this can be done much easily. </p>
+  <img src = "captcha.jpg" height="300" width="400">
+<br>
+<br>
+<h3>Prediction</h3>
+<p>This is a fairly broad area, however, regression analysis is such that most forms of prediction can utilise a supervised learning algorithm.
+  As mentioned in the previous section, this is used to predict weather patterns based on historical data, location, time of year and other variables. 
+From this, a prediction of weather in the futures can be made. 
+</p>
+<p>This can also be applied to many other sectors which rely on predictions. One of these is the housing market. If we can share data on different 
+  variables of a house, using a regression algorithm, we can get a reliable price. Same for the stock market. If we can measure a certain stock,
+  using a regression analysis, we can see if a stock will rise or depreciate. 
+</p>
+
+<h3>Image Classification</h3>
+<p>We also see image classification as relatively new tool at our disposal. However, the possibilities of this may not yet be fully recognised.
+  Image classification is being able to classify images into different categories. Take travel as an example, with image classification, we can 
+  use Automatic Number Plate Recognition (ANPR) cameras to get a cars' number plate, however with classification, we can use this to get the 
+  make and model, which could have applications in fighting crime. As well as this, face recognition can be used. Again, this can have applications 
+  in cybersecurity and in fighting crime. 
+</p>
+<p>Image classification has other benefits. If images of skin lesions can be put into a supervised algorithm looking for melanoma, or other conditions, 
+  then this could be a very powerful tool at our disposal. The implications this could have could also be major, for example, it could lead to quicker
+  diagnosis and reduce waiting times. It could also reduce the workload of medical professionals and others. 
+</p>

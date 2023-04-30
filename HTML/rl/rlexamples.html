@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--Here is the left navigation part of the website.-->
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="rlhome.html"> Overview</a></li>
+    <br>
+    <li><a href="rlexamples.html"> Examples of Reinforced Learning</a></li>
+    <br>
+    <li><a href="../Quizzes/rl_quiz.html"> Quiz</a></li>
+    <br>
+</ul>
+</div>
+
+<!--Here is the content for this section of the educational tool.It features written information.-->
+<div id="content">
+  <h1> Examples of Reinforced learning</h1>
+  <p> Like with the other forms of AI, there are many different ways that reinforced learning is used in the world around us. 
+    This section will look at just some of the different industries and ways that reinforcement learning is applied. 
+  </p>
+
+  <h3>Emerging technologies</h3>
+  <p>This may seem as a broad industry, however there is a lot of research and application of reinforcement learning in this field. 
+    First, self-driving cars are becoming a new technology that some countries have started to implement. These allow for cars to be driven 
+    automatically, rather than controlled by a user. Well in order for this to happen, the car must learn from the environment around it. 
+    In this case, the algorithm controlling the car takes in data from its surroundings, such as roads, other road users, pedestrians etc. 
+    and form this it is able to drive safely in the environnement. The cars have gone through rigorous development and testing to get to this point. 
+
+  </p>
+
+  <p>Another technology to consider is the robotics industry. Very similar to self-driving cars, robotics, if their are to become autonomous, or at least perceived 
+    as autonomous, then they too need to learn from their surroundings to perform the tasks expected of them. The use of robotics is becoming
+    very big in the world of manufacturing. The effects that well designed robotics can have of production allows for quicker and more efficient
+    production process.
+
+  </p>
+  <img src="driving.jpg" height="300" width="450" >
+  <br>
+  <br>
+  <h3>Natural Language Processing</h3>
+  <p>This is one of the ways that reinforced learning is being utilised. Many different applications use natural-language processing (NLP) for 
+    various tasks. For example, most people now have a phone with the ability to talk to, like Siri or Alexa. These utilise NLP to work.
+    What happen is that the applications are trained and interact with the environment around them which allow users to have a personal assistant.
+    This will only improve, in the past this technology was limited to mearly playing songs or performing basic tasks. Now we can use this 
+    to perform most functionality that our devices are capable of. This is good for accessibility issues and, as NLP can use a voice, it can utilise
+    biometrics, making it secure. 
+  </p>
+
+  <p>NLP interfaces are not always voice controlled. Another way that NLP is used with reinforced learning is through Chatbots.
+    Chatbots have really taken off in the past couple of years and now we are seeing the rise of applications such as ChatGPT. 
+    This specific chatbot is making grounds as one of the first mass-used chatbot services. ChatGPT, and the plethora of others in development,
+    are using reinforced learning to allow us to interface with the chatbot. In industry, this could mean that a lot of customer service is doen through 
+    chatbots. It could also see a rise in most e-commerce websites. In the case of ChatGPT, they use reinforced learning based on human feedback, whilst also
+    using supervised learning to train the initial model. 
+  
+  <img src="chatgpt.svg" height="500" width="650">
+  <blockquote>Here is what Open AI, the parent company of ChatGPT use to describe how their chatbot works. It's well worth a read to learn more. </blockquote>
+  </p>
+
+
+  <br>
+
+  <h3>Science</h3>
+  <p>We are also seeing benefits of reinforced learning in the science sector as well. Again, this is obviously very broad but I would like to share 
+    a few examples of how AI is  being used. First, reinforced learning can be used to model the world around use. This could be beneficial 
+    in the engineering industry. If an engineer had to model, for example, if a bridge was safe, now, with a well designed reinforced learning model, 
+    the engineer could check that bridge was safe for different conditions. This could then be applied to different contexts.
+  
+  </p>
+  <p>Tech Vidvan also say that reinforcement learning can be used in atomic science. For example, if a scientist were to combine different 
+    chemicals together, reinforcement learning can allow for "cleaner reactions that yield better products". (Tech Vidvan, No Date) 
+  </p>

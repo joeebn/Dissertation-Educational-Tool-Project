@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>What is AI</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition tot he style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+
+</head>
+<body onload = "getUser()">
+
+<script src="main.js"></script>
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="../website.html">Home</a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="../resources.html">My Learning</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--Here is the left navigation of the educational tool -->
+<div id="navigation">
+  <ul>
+    <br>
+    <li><a href="mlhome.html"> Overview</a></li>
+    <br>
+    <li><a href="mlexamples.html"> Examples of Machine Learning</a></li>
+    <br>
+    <li><a href="../Quizzes/ml_quiz.html"> Quiz</a></li>
+    <br>
+</ul>
+</div>
+
+<!--Here is the content for this section of the educational tool.It features written information. Images and links to 
+different articles.-->
+<div id="content">
+  <h1> Home of Machine Learning</h1>
+
+  <p>So far we have looked at different ways that AI can be used and have looked at 3 different models for AI. 
+    Machine Learning is a subbranch of AI. All of the methods: supervised, unsupervised and reinforcement learning, all use machine learning 
+    in one way or another. This section aims to look at how machine learning is being used in different industries and the effect these have on
+    those industries. The aim is that you are then equipped with the knowledge and understanding of how machine learning fits, or could fit, 
+    into your chosen field. 
+  </p>
+
+  <p>Remember, machine learning is when a machine has the ability to learn without being programmed to do so. So, the way the program learns 
+    is designed by a developer, but the program uses the data it receives and uses that to improve the algorithm by itself. 
+  </p>
+
+  <img src="ml.png" height="400" width="550">
+  <p>Here is a diagram showing the relationship between the different AI learning types and Machine Learning. This 
+    image is from <a href="https://www.wordstream.com/blog/ws/2017/07/28/machine-learning-applications">https://www.wordstream.com/blog/ws/2017/07/28/machine-learning-applications</a>
+  </p>

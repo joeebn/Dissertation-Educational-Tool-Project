@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Title of the website and link the Bootstrap CSS code that will be used to create a house style for the website-->
+  <title>AI Literacy Tool</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!--Addition to the style of the website to create the main content of the page and the side navigation bar. -->
+<style>
+
+  #navigation {
+    margin-top: 20 px;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+  }
+
+  #content{
+
+  margin-left: 20%;
+  margin-top: 20px;
+}
+</style>
+
+
+
+</head>
+<body >
+
+<!--This is the top navigation bar that will be on all pages of the educational tool. The user will be able to toggle between the
+pages  -->
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id = "Username"> </a>
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link" href="website.html">Home</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link" href="resources.html">My Learning</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="results.html">Results/Progress</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.html">Login/Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!--Here there are different sections headings for the different parts of the educational tool.
+There is also a button in each section to trigger the getting of the data from the database. 
+ Much easier to have a button to trigger rather than all in one go as the page loads. -->
+  
+  <div id='content'>
+    <h1>Results</h1>
+
+    <p id="quiz_results"></p>
+    <p id="quiz"></p>
+
+    <!--The Overall section. -->
+    <h2>Overall</h2>
+   
+    <!--Button to get the data for this section.-->
+    <button type="button" id="overall_data" name="overall_data">Get Data</button>
+
+    <!--Canvas is where the chart will go. -->
+    <canvas id="overall" style="width:100%;max-width:700px"></canvas>
+
+    <!--This links to the chart.js so the charts can be created. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+
+    <script type="module">
+      //Setting up the database.
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import {getFirestore, getDoc, query, collection, where, getDocs, doc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"
+       
+      
+      // Firebase configuration code. This comes from the firebase console. Not self-written.
+      //Credit to Firebase.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
+      authDomain: "cloud-a535b.firebaseapp.com",
+      projectId: "cloud-a535b",
+      storageBucket: "cloud-a535b.appspot.com",
+      messagingSenderId: "215864555524",
+      appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
+    };
+
+ // Initialising the firebase database ready to retrieve the data.
+ 
+ const app = initializeApp(firebaseConfig);
+
+ const db = getFirestore(app);
+
+ //Getting the user name saved in the local storage of the browser.
+ var user = localStorage.getItem("name")
+  
+
+
+ //https://www.youtube.com/watch?v=WnxyWOC2QvI
+ //Some of this code comes from this YouTube video. Credit to 'Info Tech WAR for Coding'
+ //This listens for the get data button to be pressed, when it is it runs a query. 
+ //This here has multiple queries, it gets all the quiz results (7 quizzes) for the user. 
+  overall_data.addEventListener('click', (e) => {
+    const q = query(collection(db,"formData"), where("user", "==", user), where('quiz','==',2) );
+    const a = query(collection(db,"formData"), where("user", "==", user), where('quiz','==',3) );
+    const b = query(collection(db,"formData"), where("user", "==", user), where('quiz','==',4) );
+    const c = query(collection(db,"formData"), where("user", "==", user), where('quiz','==',5) );
+    const d = query(collection(db,"formData"), where("user", "==", user), where('quiz','==',6) );
+    const x = query(collection(db,"formData"), where("user", "==", user), where('quiz','==',7) );
+    const f = query(collection(db,"formData"), where("user", "==", user), where('quiz','==',8) );
+
+
+    //This gets a snapshot of the query. Credit to 'Info Tech WAR for Coding' for guidence in this section.
+    getDocs (q).then(docSnap => {
+      let results = [];
+      docSnap.forEach((doc) => {
+        results.push({ ...doc.data(), id:doc.id})
+
+      });
+      
+      //Console log used for testing the query success
+      //Storing the results of the query in a variable.
+      //This is repeated mutiple times (7) for this section.
+      console.log("Document Data:", results);
+      var q1 = results[0]['result'] 
+      
+      getDocs (a).then(docSnap => {
+      let results = [];
+      docSnap.forEach((doc) => {
+        results.push({ ...doc.data(), id:doc.id})
+
+      });
+      console.log("Document Data:", results);
+      var q2 = results[0]['result'] 
+
+      getDocs (b).then(docSnap => {
+      let results = [];
+      docSnap.forEach((doc) => {
+        results.push({ ...doc.data(), id:doc.id})
+
+      });
+      console.log("Document Data:", results);
+      var q3 = results[0]['result'] 
+
+
+      getDocs (c).then(docSnap => {
+      let results = [];
+      docSnap.forEach((doc) => {
+        results.push({ ...doc.data(), id:doc.id})
+
+      });
+      console.log("Document Data:", results);
+      var q4 = results[0]['result'] 
+
+      getDocs (d).then(docSnap => {
+      let results = [];
+      docSnap.forEach((doc) => {
+        results.push({ ...doc.data(), id:doc.id})
+
+      });
+      console.log("Document Data:", results);
+      var q5 = results[0]['result'] 
+
+      getDocs (x).then(docSnap => {
+      let results = [];
+      docSnap.forEach((doc) => {
+        results.push({ ...doc.data(), id:doc.id})
+
+      });
+      console.log("Document Data:", results);
+      var q6 = results[0]['result'] 
+    
+      getDocs (f).then(docSnap => {
+      let results = [];
+      docSnap.forEach((doc) => {
+        results.push({ ...doc.data(), id:doc.id})
+
+      });
+
+      console.log("Document Data:", results);
+      var q7 = results[0]['result'] 
+ 
+
+
+      //These are the x and y axis data to be used in the chart
+      //First lot are the x axis values, each individual quiz.
+      //Second are the queried scores from each quiz. 
+      var questions = ["Overview Quiz","Unsupervised Learning","Supervised Learning","Reinforcement Learning","Machine Learning","Ethics","Security"];
+      var score_per_questions = [q1,q2,q3,q4,q5,q6,q7];
+      
+      // Initial chart design come from https://www.w3schools.com/ai/ai_chartjs.asp
+      //Credit to W3Schools.
+      //Creates a chart to be places in the canvas above. Here a bar chart is used. 
+      //Some options have been added, like starting the chart at 0
+      new Chart("overall", {
+        type: "bar",
+        data: {
+          labels: questions,
+      
+          datasets: [{
+            backgroundColor: "rgba(255,0,0,1)",
+            data: score_per_questions
+           
+          }]
+        },
+        options: {
+
+          legend: {display: false},
+          scales: {
+              xAxes: [{ticks: {min: 0, max:8}}],
+              yAxes: [{ticks: {min: 0, max:8}}],
+              legend: {display: false},
+              
+        title: {
+            display: true,
+            text: "Overview of AI Quiz",
+              }
+          }
+        }
+      })
+    });
+  });
+     
+});
+});
+});
+});
+});
+});
+
+  </script>
+
+
+
+
+  <!--OVERVIEW SECTION -->
+    <h2>Overview Section</h2>
+    
+    <!--Here is where the feedback will be placed for this section.-->
+    <p id="overview_feedback1"></p>
+    <p id="overview_feedback2"></p>
+    <p id="overview_feedback3"></p>
+
+    <!--Button to trigger the querying of data and the creation of the chart-->
+    <button type="button" id="getData" name="submitData">Get Data</button>
+
+    <!--This is where the chart will go-->
+    <canvas id="Quiz1" style="width:100%;max-width:700px"></canvas>
+
+  <!--This is so the chart.js can be used. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+
+    <script type="module">
+      //Importing the information needed to link with the database
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import {getFirestore, getDoc, query, collection, where, getDocs, doc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"
+      
+  
+         // Firebase configuration code. This comes from the firebase console. Not self-written.
+      //Credit to Firebase.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
+      authDomain: "cloud-a535b.firebaseapp.com",
+      projectId: "cloud-a535b",
+      storageBucket: "cloud-a535b.appspot.com",
+      messagingSenderId: "215864555524",
+      appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
+    };
+
+ // Initalising the database to query the data.
+ 
+ const app = initializeApp(firebaseConfig);
+
+ const db = getFirestore(app);
+
+ //Using local storage to get the user name. 
+ var user = localStorage.getItem("name")
+  
+ //https://www.youtube.com/watch?v=WnxyWOC2QvI
+ //Some of this code comes from this YouTube video. Credit to 'Info Tech WAR for Coding'
+ //Listens for the button to be pressed and then queries the data. 
+ //Here it will look for data where the user == user and the quiz == to the 2 quiz
+  getData.addEventListener('click', (e) => {
+    const q = query(collection(db,"formData"), where("user", "==", user), where ('quiz','==', 2));
+
+
+
+ //This gets a snapshot of the query. Storing the result into a list. 
+ //Credit to 'Info Tech WAR for Coding' for guidance in this section.
+    getDocs (q).then(docSnap => {
+      let users = [];
+      docSnap.forEach((doc) => {
+        users.push({ ...doc.data(), id:doc.id})
+
+      });
+      
+    //Console log used for testing the query success
+      //Storing the results of the query into variables.
+      console.log("Document Data:", users);
+      var score = users[0]['result'] 
+      var quiz = users[0]['quiz']
+      var q1 = users[0]['q1']
+      var q2 = users[0]['q2']
+      var q3 = users[0]['q3']
+      var q4 = users[0]['q4']
+      var q5 = users[0]['q5']
+      var q6 = users[0]['q6']
+      var q7 = users[0]['q7']
+      var q8 = users[0]['q8']
+      
+ 
+      //These are the x and y axis data to be used in the chart
+      //First lot are the x axis values, each quiz question
+      //Second are the queried scores from each quiz questions - either 0 or 1
+      var questions = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8"];
+      var score_per_questions = [q1,q2,q3,q4,q5,q6,q7,q8];
+      
+
+      //Some IF statements are used to check how many points have been scored. 
+      //Questions have been subgrouped to provide feedback based on what the user has scored. 
+      //Feedback is then put onto the webpage using the getElementbyID function. 
+      var basic = q1 + q2 + q3
+      if (basic >=2) {
+      document.getElementById('overview_feedback1').innerHTML = "You understand a little about AI, what it stands for and/or narrow and strong AI";
+      } else if (basic < 2 && basic > 0) {
+        document.getElementById('overview_feedback1').innerHTML = "You have a little bit of understand of what AI means and what it stands for.";
+      } else {
+        document.getElementById('overview_feedback1').innerHTML = "You don't know that much about AI basic. Be sure to look over this.";
+      }
+
+      var application = q4 + q5 + q8
+      if (application >=1) {
+      document.getElementById('overview_feedback2').innerHTML = "You seem to already know about the different types of AI applications such as big data and reinforcement learning";
+      } else {
+        document.getElementById('overview_feedback2').innerHTML = "You don't seem to know that much about the different AI application, like big data and reinforcement learning. Be sure to look over these.";
+      }
+
+      var industry = q6+q7
+
+      if (industry >=1) {
+      document.getElementById('overview_feedback3').innerHTML = "You have an understanding of how AI works in different industries. ";
+      }else {
+        document.getElementById('overview_feedback3').innerHTML = "You don't yet know how AI is used in different industries. Please look over this. ";
+      }
+
+      
+      // Initial chart design come from https://www.w3schools.com/ai/ai_chartjs.asp
+      //Credit to W3Schools.
+      //Creates a chart to be places in the canvas above. Here a bar chart is used. 
+      //Some options have been added, like starting the chart at 0
+      new Chart("Quiz1", {
+        type: "bar",
+        data: {
+          labels: questions,
+          datasets: [{
+            backgroundColor: "rgba(255,0,0,1)",
+            data: score_per_questions
+          }]
+        },
+        options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 0, max:8}}],
+              yAxes: [{ticks: {min: 0, max:1}}],
+             
+              title: {
+                display: true,
+                text: "Overview of AI Quiz"
+              }
+          }
+        }
+      });
+    });
+  });
+ 
+    </script>
+
+
+   <!--UNSUPERVISED LEARNING SECTION -->
+    <h2>Unsupervised Learning</h2>
+
+    <!--Here is where the feedback will be placed for this section.-->
+    <p id="ul_feedback1"></p>
+    <p id="ul_feedback2"></p>
+    <p id="ul_feedback3"></p>
+
+   <!--Button to trigger the querying of data and the creation of the chart-->
+    <button type="button" id="ulquiz" name="ulquiz">Get Data</button>
+    
+    <!--This is where the chart will go-->
+    <canvas id="Quiz2" style="width:100%;max-width:700px"></canvas>
+
+    <!--This is so the chart.js can be used. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script type="module">
+      //Importing the information needed to link with the database
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import {getFirestore, getDoc, query, collection, where, getDocs, doc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"
+       
+      
+      // Firebase configuration code. This comes from the firebase console. Not self-written.
+      //Credit to Firebase.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
+      authDomain: "cloud-a535b.firebaseapp.com",
+      projectId: "cloud-a535b",
+      storageBucket: "cloud-a535b.appspot.com",
+      messagingSenderId: "215864555524",
+      appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
+    };
+
+
+    // Initialising the database to query the data.
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+    //Using local storage to get the user name. 
+    var user = localStorage.getItem("name")
+      
+  
+    //https://www.youtube.com/watch?v=WnxyWOC2QvI
+ //Some of this code comes from this YouTube video. Credit to 'Info Tech WAR for Coding'
+ //Listens for the button to be pressed and then queries the data. 
+ //Here it will look for data where the user == user and the quiz == to the 3 quiz
+      ulquiz.addEventListener('click', (e) => {
+        const q = query(collection(db,"formData"), where("quiz", "==", 3), where ('user','==', user));
+    
+        //This gets a snapshot of the query. Storing the result into a list. 
+      //Credit to 'Info Tech WAR for Coding' for guidance in this section.
+        getDocs (q).then(docSnap => {
+          let quiz2 = [];
+          docSnap.forEach((doc) => {
+            quiz2.push({ ...doc.data(), id:doc.id})
+
+          });
+
+      //Console log used for testing the query success
+      //Storing the results of the query into variables.
+          console.log("Document Data:", quiz2);
+          var score = quiz2[0]['result'] 
+          var quiz = quiz2[0]['quiz']
+          var q1 = quiz2[0]['q1']
+          var q2 = quiz2[0]['q2']
+          var q3 = quiz2[0]['q3']
+          var q4 = quiz2[0]['q4']
+          var q5 = quiz2[0]['q5']
+          var q6 = quiz2[0]['q6']
+          var q7 = quiz2[0]['q7']
+          var q8 = quiz2[0]['q8']
+         
+    
+      //These are the x and y axis data to be used in the chart
+      //First lot are the x axis values, each quiz question
+      //Second are the queried scores from each quiz questions - either 0 or 1
+          var questions = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8"];
+          var score_per_questions = [q1,q2,q3,q4,q5,q6,q7,q8];
+          
+
+      //Some IF statements are used to check how many points have been scored. 
+      //Questions have been subgrouped to provide feedback based on what the user has scored. 
+      //Feedback is then put onto the webpage using the getElementbyID function. 
+          var basic = q1 + q2 + q3
+          if (basic >=2) {
+          document.getElementById('ul_feedback1').innerHTML = "You have understood the basics of unsupervised learning well. You understand what unsupervised learning is and clustering and/or anomaly detection";
+          } else if (basic < 2 && basic > 0) {
+            document.getElementById('ul_feedback1').innerHTML = "You have understood some of the basics of unsupervised learning but have missed some of the answers. Have a look over the materials again to learn this section.";
+          } else {
+            document.getElementById('ul_feedback1').innerHTML = "You haven't managed to answer many questions on unsupervised learning. Please look over the materials again.";
+          }
+
+          var application = q4 + q5 + q7
+          if (application >=2) {
+          document.getElementById('ul_feedback2').innerHTML = "You have understood some of the real-world applications of unsupervised learning and have been able to discuss the challenges that are faced. ";
+          } else if (application <2 && application>0){
+            document.getElementById('ul_feedback2').innerHTML = "You have got some of the real-world applications but have not yet fully understood all of them or the challenges of unsupervised learning. Please look over this section again.";
+          } else {
+            document.getElementById('ul_feedback2').innerHTML = "You have not yet managed to answer any questions of the real-world applications of unsupervised learning. Please look over this again. ";
+          }
+
+          var applying = q6+q8
+
+          if (applying >=1) {
+          document.getElementById('ul_feedback3').innerHTML = "You have shown some applied knowledge of unsupervised learning. Well done ";
+          }else {
+            document.getElementById('ul_feedback3').innerHTML = "You have not shown how unsupervised learning can be used in different ways. Have a look over this again.";
+          }
+
+      // Initial chart design come from https://www.w3schools.com/ai/ai_chartjs.asp
+      //Credit to W3Schools.
+      //Creates a chart to be places in the canvas above. Here a bar chart is used. 
+      //Some options have been added, like starting the chart at 0
+          new Chart("Quiz2", {
+            type: "bar",
+            data: {
+              labels: questions,
+              datasets: [{
+                backgroundColor: "rgba(255,0,0,1)",
+                data: score_per_questions
+              }]
+            },
+            options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 0, max:8}}],
+              yAxes: [{ticks: {min: 0, max:1}}],
+              legend: {display: false},
+            title: {
+              display: true,
+              text: "Unsupervised Learning Quiz"
+              }
+          }
+        }
+      });
+    });
+  });
+
+        </script>
+
+
+
+
+    <!--Supervised Learning Section-->
+    <h2>Supervised Learning</h2>
+    
+    <!--Here is where the feedback will be placed for this section.-->
+    <p id="sl_feedback1"></p>
+    <p id="sl_feedback2"></p>
+    <p id="sl_feedback3"></p>
+
+    <!--Button to trigger the querying of data and the creation of the chart-->
+    <button type="button" id="slquiz" name="slquiz">Get Data</button>
+
+    <!--This is where the chart will go-->
+    <canvas id="Quiz3" style="width:100%;max-width:700px"></canvas>
+
+    <!--This is so the chart.js can be used. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script type="module">
+      //Importing the information needed to link with the database
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import {getFirestore, getDoc, query, collection, where, getDocs, doc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"
+  
+      
+      // Firebase configuration code. This comes from the firebase console. Not self-written.
+      //Credit to Firebase.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
+      authDomain: "cloud-a535b.firebaseapp.com",
+      projectId: "cloud-a535b",
+      storageBucket: "cloud-a535b.appspot.com",
+      messagingSenderId: "215864555524",
+      appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
+    };
+
+// Initialising the database to query the data.
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+    //Using local storage to get the user name. 
+    var user = localStorage.getItem("name")
+      
+//https://www.youtube.com/watch?v=WnxyWOC2QvI
+ //Some of this code comes from this YouTube video. Credit to 'Info Tech WAR for Coding'
+ //Listens for the button to be pressed and then queries the data. 
+ //Here it will look for data where the user == user and the quiz == to the 4 quiz
+      slquiz.addEventListener('click', (e) => {
+        const q = query(collection(db,"formData"), where("quiz", "==", 4), where ('user','==', user));
+    
+      //This gets a snapshot of the query. Storing the result into a list. 
+      //Credit to 'Info Tech WAR for Coding' for guidance in this section.
+        getDocs (q).then(docSnap => {
+          let quiz3 = [];
+          docSnap.forEach((doc) => {
+            quiz3.push({ ...doc.data(), id:doc.id})
+
+          });
+
+      //Console log used for testing the query success
+      //Storing the results of the query into variables.
+          console.log("Document Data:", quiz3);
+          var score = quiz3[0]['result'] 
+          var quiz = quiz3[0]['quiz']
+          var q1 = quiz3[0]['q1']
+          var q2 = quiz3[0]['q2']
+          var q3 = quiz3[0]['q3']
+          var q4 = quiz3[0]['q4']
+          var q5 = quiz3[0]['q5']
+          var q6 = quiz3[0]['q6']
+          var q7 = quiz3[0]['q7']
+          var q8 = quiz3[0]['q8']
+          
+
+      //Some IF statements are used to check how many points have been scored. 
+      //Questions have been subgrouped to provide feedback based on what the user has scored. 
+      //Feedback is then put onto the webpage using the getElementbyID function. 
+          var basic = q1 + q2 + q3
+          if (basic >=2) {
+          document.getElementById('sl_feedback1').innerHTML = "You have understood the basics of supervised learning well. You understand what supervised learning is and the different ways it can be used.";
+          } else if (basic < 2 && basic > 0) {
+            document.getElementById('sl_feedback1').innerHTML = "You have understood some of the basics of supervised learning but have missed some of the answers. Have a look over the materials again to learn this section.";
+          } else {
+            document.getElementById('sl_feedback1').innerHTML = "You haven't managed to answer many questions on supervised learning. Please look over the materials again.";
+          }
+
+          var application = q4 + q5 
+          if (application >=1) {
+          document.getElementById('sl_feedback2').innerHTML = "You have managed to answer the questions on the application of supervised learning. Well done. ";
+          } else {
+            document.getElementById('ul_feedback2').innerHTML = "You have not yet managed to answer any questions on how the supervised learning can be used. Please look over the materials to help improve this section. ";
+          }
+
+          var applying = q6+q7+q8
+
+          if (applying >=2) {
+          document.getElementById('sl_feedback3').innerHTML = "You have shown how supervised learning can be used in the real-world. Well done.  ";
+          }else if (applying < 2 && applying >0){
+            document.getElementById('sl_feedback3').innerHTML = "You have answered how some of how supervised learning can be used in the real-world but have not yet fully answered al the questions. Have a look over the materials again.";
+          } else{
+            document.getElementById('sl_feedback3').innerHTML = "You don't know how reinforced can be used in the real-world yet. Please look over the materials again. ";
+
+          }
+
+    
+
+    //These are the x and y axis data to be used in the chart
+      //First lot are the x axis values, each quiz question
+      //Second are the queried scores from each quiz questions - either 0 or 1
+          var questions = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8"];
+          var score_per_questions = [q1,q2,q3,q4,q5,q6,q7,q8];
+          
+      // Initial chart design come from https://www.w3schools.com/ai/ai_chartjs.asp
+      //Credit to W3Schools.
+      //Creates a chart to be places in the canvas above. Here a bar chart is used. 
+      //Some options have been added, like starting the chart at 0
+          new Chart("Quiz3", {
+            type: "bar",
+            data: {
+              labels: questions,
+              datasets: [{
+                backgroundColor: "rgba(255,0,0,1)",
+                data: score_per_questions
+              }]
+            },
+            options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 0, max:8}}],
+              yAxes: [{ticks: {min: 0, max:1}}],
+              legend: {display: false},
+              title: {
+                display: true,
+                text: "Supervised Learning Quiz"
+              }
+          }
+        }
+      });
+    });
+  });
+        </script>
+
+    <!--Reinforced Learning Section-->
+    <h2>Reinforcement Learning</h2>
+
+    <!--Here is where the feedback will be placed for this section.-->
+    <p id="rl_feedback1"></p>
+    <p id="rl_feedback2"></p>
+    <p id="rl_feedback3"></p>
+
+    <!--Button to trigger the querying of data and the creation of the chart-->
+    <button type="button" id="rlquiz" name="rlquiz">Get Data</button>
+
+    <!--This is where the chart will go-->
+    <canvas id="Quiz4" style="width:100%;max-width:700px"></canvas>
+
+    <!--This is so the chart.js can be used. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script type="module">
+
+      //Importing the information needed to link with the database
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import {getFirestore, getDoc, query, collection, where, getDocs, doc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"
+    
+      
+      // Firebase configuration code. This comes from the firebase console. Not self-written.
+      //Credit to Firebase.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
+      authDomain: "cloud-a535b.firebaseapp.com",
+      projectId: "cloud-a535b",
+      storageBucket: "cloud-a535b.appspot.com",
+      messagingSenderId: "215864555524",
+      appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
+    };
+    
+    // Initialising the database to query the data.
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+  
+    //Using local storage to get the user name. 
+    var user = localStorage.getItem("name")
+      
+//https://www.youtube.com/watch?v=WnxyWOC2QvI
+ //Some of this code comes from this YouTube video. Credit to 'Info Tech WAR for Coding'
+ //Listens for the button to be pressed and then queries the data. 
+ //Here it will look for data where the user == user and the quiz == to the 5 quiz
+      rlquiz.addEventListener('click', (e) => {
+        const q = query(collection(db,"formData"), where("quiz", "==", 5), where ('user','==', user));
+    
+        
+//This gets a snapshot of the query. Storing the result into a list. 
+ //Credit to 'Info Tech WAR for Coding' for guidance in this section.
+        getDocs (q).then(docSnap => {
+          let quiz4 = [];
+          docSnap.forEach((doc) => {
+            quiz4.push({ ...doc.data(), id:doc.id})
+
+          });
+          
+      //Console log used for testing the query success
+      //Storing the results of the query into variables.
+          console.log("Document Data:", quiz4);
+          var score = quiz4[0]['result'] 
+          var quiz = quiz4[0]['quiz']
+          var q1 = quiz4[0]['q1']
+          var q2 = quiz4[0]['q2']
+          var q3 = quiz4[0]['q3']
+          var q4 = quiz4[0]['q4']
+          var q5 = quiz4[0]['q5']
+          var q6 = quiz4[0]['q6']
+          var q7 = quiz4[0]['q7']
+          var q8 = quiz4[0]['q8']
+
+      //Some IF statements are used to check how many points have been scored. 
+      //Questions have been subgrouped to provide feedback based on what the user has scored. 
+      //Feedback is then put onto the webpage using the getElementbyID function. 
+          var basic = q1 + q2 + q3
+          if (basic >=2) {
+          document.getElementById('rl_feedback1').innerHTML = "You have understood the basics of reinforcement learning and NLP. Well done.";
+          } else if (basic < 2 && basic > 0) {
+            document.getElementById('rl_feedback1').innerHTML = "You have understood some of the basics of reinforcement learning and NLP but have missed some of the answers. Have a look over the materials again to learn this section.";
+          } else {
+            document.getElementById('rl_feedback1').innerHTML = "You haven't managed to answer many questions on reinforcement learning. Please look over the materials again.";
+          }
+
+          var application = q4 + q5 
+          if (application >=1) {
+          document.getElementById('rl_feedback2').innerHTML = "You have understood how reinforcement learning works. You have understood about the reward agent. Well done. ";
+          } else {
+            document.getElementById('ul_feedback2').innerHTML = "You have not yet managed to answer any questions on how the reinforced learning works. Please look over the materials to help improve this section. ";
+          }
+
+          var applying = q6+q7+q8
+
+          if (applying >=2) {
+          document.getElementById('rl_feedback3').innerHTML = "You have shown how reinforced learning can be used in the real-world. Well done.  ";
+          }else if (applying < 2 && applying >0){
+            document.getElementById('rl_feedback3').innerHTML = "You have answered how some of how reinforced learning can be used in the real-world but have not yet fully answered al the questions. Have a look over the materials again.";
+          } else{
+            document.getElementById('rl_feedback3').innerHTML = "You don't know how reinforced learning can be used in the real-world yet. Please look over the materials again. ";
+
+          }
+    
+      //These are the x and y axis data to be used in the chart
+      //First lot are the x axis values, each quiz question
+      //Second are the queried scores from each quiz questions - either 0 or 1
+          var questions = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8"];
+          var score_per_questions = [q1,q2,q3,q4,q5,q6,q7,q8];
+          
+      // Initial chart design come from https://www.w3schools.com/ai/ai_chartjs.asp
+      //Credit to W3Schools.
+      //Creates a chart to be places in the canvas above. Here a bar chart is used. 
+      //Some options have been added, like starting the chart at 0
+
+          new Chart("Quiz4", {
+            type: "bar",
+            data: {
+              labels: questions,
+              datasets: [{
+                backgroundColor: "rgba(255,0,0,1)",
+                data: score_per_questions
+              }]
+            },
+            options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 0, max:8}}],
+              yAxes: [{ticks: {min: 0, max:1}}],
+              legend: {display: false},
+              title: {
+                display: true,
+                text: "Reinforcement Learning Quiz"
+              }
+          }
+        }
+      });
+    });
+  });
+
+
+        </script>
+
+    <!--Machine Learning Section-->
+    <h2>Machine Learning</h2>
+
+    <!--Here is where the feedback will be placed for this section.-->
+    <p id="ml_feedback1"></p>
+    <p id="ml_feedback2"></p>
+
+    <!--Button to trigger the querying of data and the creation of the chart-->
+    <button type="button" id="mlquiz" name="mlquiz">Get Data</button>
+
+    <!--This is where the chart will go-->
+    <canvas id="Quiz5" style="width:100%;max-width:700px"></canvas>
+
+      <!--This is so the chart.js can be used. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script type="module">
+
+      //Importing the information needed to link with the database
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import {getFirestore, getDoc, query, collection, where, getDocs, doc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"
+      
+      // Firebase configuration code. This comes from the firebase console. Not self-written.
+      //Credit to Firebase.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
+      authDomain: "cloud-a535b.firebaseapp.com",
+      projectId: "cloud-a535b",
+      storageBucket: "cloud-a535b.appspot.com",
+      messagingSenderId: "215864555524",
+      appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
+    };
+
+// Initialising the database to query the data.
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+//Using local storage to get the user name. 
+    var user = localStorage.getItem("name")
+      
+   //https://www.youtube.com/watch?v=WnxyWOC2QvI
+ //Some of this code comes from this YouTube video. Credit to 'Info Tech WAR for Coding'
+ //Listens for the button to be pressed and then queries the data. 
+ //Here it will look for data where the user == user and the quiz == to the 6 quiz
+      mlquiz.addEventListener('click', (e) => {
+        const q = query(collection(db,"formData"), where("quiz", "==", 6), where ('user','==', user));
+    
+    //This gets a snapshot of the query. Storing the result into a list. 
+ //Credit to 'Info Tech WAR for Coding' for guidance in this section.    
+        getDocs (q).then(docSnap => {
+          let quiz5 = [];
+          docSnap.forEach((doc) => {
+            quiz5.push({ ...doc.data(), id:doc.id})
+
+          });
+
+      //Console log used for testing the query success
+      //Storing the results of the query into variables.
+          console.log("Document Data:", quiz5);
+          var score = quiz5[0]['result'] 
+          var quiz = quiz5[0]['quiz']
+          var q1 = quiz5[0]['q1']
+          var q2 = quiz5[0]['q2']
+          var q3 = quiz5[0]['q3']
+          var q4 = quiz5[0]['q4']
+          var q5 = quiz5[0]['q5']
+          var q6 = quiz5[0]['q6']
+          var q7 = quiz5[0]['q7']
+          var q8 = quiz5[0]['q8']
+      
+      
+      //Some IF statements are used to check how many points have been scored. 
+      //Questions have been subgrouped to provide feedback based on what the user has scored. 
+      //Feedback is then put onto the webpage using the getElementbyID function. 
+          var basic = q1 + q2
+          if (basic >=1) {
+          document.getElementById('ml_feedback1').innerHTML = "You have understood what machine learning is. Well done.";
+          } else {
+          document.getElementById('ml_feedback1').innerHTML = "You haven't managed to answer what machine learning is. This is a vital part to AI, so please look over this again.";
+          }
+
+          var application = q3 + q4 + q5 + q6 + q7 + q8 
+          if (application >=3) {
+          document.getElementById('ml_feedback2').innerHTML = " You understand the different ways machine learning and AI can be used in different industries. Well Done. ";
+          } else  if (application <3 && application >0){
+            document.getElementById('ml_feedback2').innerHTML = "You understand a little bit about how machine learning and AI can be used in different industries. I would look at this in more detail though.  ";
+          } else{
+            document.getElementById('ml_feedback2').innerHTML = "You have not managed to understand how AI can be used in different industries. Please Look over this again.";
+
+          }
+
+    
+      //These are the x and y axis data to be used in the chart
+      //First lot are the x axis values, each quiz question
+      //Second are the queried scores from each quiz questions - either 0 or 1
+          var questions = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8"];
+          var score_per_questions = [q1,q2,q3,q4,q5,q6,q7,q8];
+          
+      // Initial chart design come from https://www.w3schools.com/ai/ai_chartjs.asp
+      //Credit to W3Schools.
+      //Creates a chart to be places in the canvas above. Here a bar chart is used. 
+      //Some options have been added, like starting the chart at 0
+
+          new Chart("Quiz5", {
+            type: "bar",
+            data: {
+              labels: questions,
+              datasets: [{
+                backgroundColor: "rgba(255,0,0,1)",
+                data: score_per_questions
+              }]
+            },
+            options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 0, max:8}}],
+              yAxes: [{ticks: {min: 0, max:1}}],
+              legend: {display: false},
+              title: {
+                display: true,
+                text: "Machine Learning Quiz"
+              }
+          }
+        }
+      });
+    });
+  });
+
+        </script>
+
+    <!--Ethics Section-->
+    <h2>Ethics</h2>
+
+   <!--Here is where the feedback will be placed for this section.-->
+    <p id="ethics_feedback1"></p>
+    <p id="ethics_feedback2"></p>
+    <p id="ethics_feedback3"></p>
+
+    <!--Button to trigger the querying of data and the creation of the chart-->
+    <button type="button" id="ethicsquiz" name="ethicsquiz">Get Data</button>
+
+     <!--This is where the chart will go-->
+    <canvas id="Quiz6" style="width:100%;max-width:700px"></canvas>
+
+      <!--This is so the chart.js can be used. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script type="module">
+
+      //Importing the information needed to link with the database
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import {getFirestore, getDoc, query, collection, where, getDocs, doc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"
+   
+      // Firebase configuration code. This comes from the firebase console. Not self-written.
+      //Credit to Firebase.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
+      authDomain: "cloud-a535b.firebaseapp.com",
+      projectId: "cloud-a535b",
+      storageBucket: "cloud-a535b.appspot.com",
+      messagingSenderId: "215864555524",
+      appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
+    };
+  
+    // Initialising the database to query the data.
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+    //Using local storage to get the user name. 
+    var user = localStorage.getItem("name")
+      
+  //https://www.youtube.com/watch?v=WnxyWOC2QvI
+ //Some of this code comes from this YouTube video. Credit to 'Info Tech WAR for Coding'
+ //Listens for the button to be pressed and then queries the data. 
+ //Here it will look for data where the user == user and the quiz == to the 7 quiz
+      ethicsquiz.addEventListener('click', (e) => {
+        const q = query(collection(db,"formData"), where("quiz", "==", 7), where ('user','==', user));
+    
+  //This gets a snapshot of the query. Storing the result into a list. 
+ //Credit to 'Info Tech WAR for Coding' for guidance in this section.
+        getDocs (q).then(docSnap => {
+          let quiz6 = [];
+          docSnap.forEach((doc) => {
+            quiz6.push({ ...doc.data(), id:doc.id})
+
+          });
+
+      //Console log used for testing the query success
+      //Storing the results of the query into variables.
+          console.log("Document Data:", quiz6);
+          var score = quiz6[0]['result'] 
+          var quiz = quiz6[0]['quiz']
+          var q1 = quiz6[0]['q1']
+          var q2 = quiz6[0]['q2']
+          var q3 = quiz6[0]['q3']
+          var q4 = quiz6[0]['q4']
+          var q5 = quiz6[0]['q5']
+          var q6 = quiz6[0]['q6']
+          var q7 = quiz6[0]['q7']
+          var q8 = quiz6[0]['q8']
+          
+
+      //Some IF statements are used to check how many points have been scored. 
+      //Questions have been subgrouped to provide feedback based on what the user has scored. 
+      //Feedback is then put onto the webpage using the getElementbyID function. 
+          if (q1 == 1){
+            document.getElementById('ethics_feedback1').innerHTML = "You have a good general overview of what Ethics in AI is."
+          } 
+          else{
+            document.getElementById('ethics_feedback1').innerHTML = "Please look over what AI ethics is."
+          }
+
+          var basic = q2 + q3 + q4 + q5 + q6
+          if (basic >=3) {
+          document.getElementById('ethics_feedback2').innerHTML = "You seem to have a good understanding of the different forms of AI ethics. Well Done.";
+          } else if (basic <3 && basic>1) {
+          document.getElementById('ethics_feedback2').innerHTML = "You understand some of the key parts of AI ethics but have not yet fully understood them. Please look over this section again.";
+          } else {
+            document.getElementById('ethics_feedback2').innerHTML = "You don't yet fully understand AI ethics. Please review this section.";
+
+          }
+
+          var responsibility = q7 + q8 
+          if (responsibility >=1) {
+          document.getElementById('ethics_feedback3').innerHTML = "You understand the role of developers and governments in AI.";
+          } else{
+            document.getElementById('ethics_feedback3').innerHTML = "You do not yet understand the role od developers and governments in AI.";
+
+          }
+
+    
+
+      //These are the x and y axis data to be used in the chart
+      //First lot are the x axis values, each quiz question
+      //Second are the queried scores from each quiz questions - either 0 or 1
+          var questions = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8"];
+          var score_per_questions = [q1,q2,q3,q4,q5,q6,q7,q8];
+          
+      // Initial chart design come from https://www.w3schools.com/ai/ai_chartjs.asp
+      //Credit to W3Schools.
+      //Creates a chart to be places in the canvas above. Here a bar chart is used. 
+      //Some options have been added, like starting the chart at 0
+
+          new Chart("Quiz6", {
+            type: "bar",
+            data: {
+              labels: questions,
+              datasets: [{
+                backgroundColor: "rgba(255,0,0,1)",
+                data: score_per_questions
+              }]
+            },
+            options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 0, max:8}}],
+              yAxes: [{ticks: {min: 0, max:1}}],
+              legend: {display: false},
+              title: {
+                display: true,
+                text: "Ethics Quiz"
+              }
+          }
+        }
+      });
+    });
+  });
+
+
+        </script>
+
+
+    <!--Security Section-->
+    <h2>Security</h2>
+    
+    <!--Here is where the feedback will be placed for this section.-->
+    <p id="security_feedback1"></p>
+    <p id="security_feedback2"></p>
+   
+
+    <!--Button to trigger the querying of data and the creation of the chart-->
+    <button type="button" id="securityquiz" name="securityquiz">Get Data</button>
+
+    <!--This is where the chart will go-->
+    <canvas id="Quiz7" style="width:100%;max-width:700px"></canvas>
+
+      <!--This is so the chart.js can be used. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script type="module">
+      //Importing the information needed to link with the database
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import {getFirestore, getDoc, query, collection, where, getDocs, doc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"
+    
+      // Firebase configuration code. This comes from the firebase console. Not self-written.
+      //Credit to Firebase.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
+      authDomain: "cloud-a535b.firebaseapp.com",
+      projectId: "cloud-a535b",
+      storageBucket: "cloud-a535b.appspot.com",
+      messagingSenderId: "215864555524",
+      appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
+    };
+
+// Initialising the database to query the data.
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+    //Using local storage to get the user name. 
+    var user = localStorage.getItem("name")
+      
+  //https://www.youtube.com/watch?v=WnxyWOC2QvI
+ //Some of this code comes from this YouTube video. Credit to 'Info Tech WAR for Coding'
+ //Listens for the button to be pressed and then queries the data. 
+ //Here it will look for data where the user == user and the quiz == to the 8 quiz
+      securityquiz.addEventListener('click', (e) => {
+        const q = query(collection(db,"formData"), where("quiz", "==", 8), where ('user','==',user));
+    
+      //This gets a snapshot of the query. Storing the result into a list. 
+      //Credit to 'Info Tech WAR for Coding' for guidance in this section.
+        getDocs (q).then(docSnap => {
+          let quiz7 = [];
+          docSnap.forEach((doc) => {
+            quiz7.push({ ...doc.data(), id:doc.id})
+
+          });
+      
+      
+      //Console log used for testing the query success
+      //Storing the results of the query into variables.
+          console.log("Document Data:", quiz7);
+          var score = quiz7[0]['result'] 
+          var quiz = quiz7[0]['quiz']
+          var q1 = quiz7[0]['q1']
+          var q2 = quiz7[0]['q2']
+          var q3 = quiz7[0]['q3']
+          var q4 = quiz7[0]['q4']
+          var q5 = quiz7[0]['q5']
+          var q6 = quiz7[0]['q6']
+          var q7 = quiz7[0]['q7']
+          var q8 = quiz7[0]['q8']
+        
+      //Some IF statements are used to check how many points have been scored. 
+      //Questions have been subgrouped to provide feedback based on what the user has scored. 
+      //Feedback is then put onto the webpage using the getElementbyID function. 
+          var basic = q1 + q2 + q6 + q7 + q8
+          if (basic >=4) {
+          document.getElementById('security_feedback1').innerHTML = "You seem to have a good understand of the different security issues that AI can cause. Well Done. ";
+          } else if (basic <4 && basic>2) {
+          document.getElementById('security_feedback1').innerHTML = "You understand some of the basics, but you need to look at this is some more detail.";
+          } else {
+            document.getElementById('security_feedback1').innerHTML = "You don't yet fully understand the security implications of AI. Please look over this as it is an important issue.";
+
+          }
+
+          var law = q3 + q4 + q5
+          if (law >=1) {
+          document.getElementById('ethics_feedback3').innerHTML = "You have a good understanding of the AI law that govern us. Well Done.";
+          } else{
+            document.getElementById('ethics_feedback3').innerHTML = "You need to be more aware of the AI laws that govern us.";
+
+          }
+
+    
+    //These are the x and y axis data to be used in the chart
+      //First lot are the x axis values, each quiz question
+      //Second are the queried scores from each quiz questions - either 0 or 1
+          var questions = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8"];
+          var score_per_questions = [q1,q2,q3,q4,q5,q6,q7,q8];
+          
+          
+      // Initial chart design come from https://www.w3schools.com/ai/ai_chartjs.asp
+      //Credit to W3Schools.
+      //Creates a chart to be places in the canvas above. Here a bar chart is used. 
+      //Some options have been added, like starting the chart at 0
+          new Chart("Quiz7", {
+            type: "bar",
+            data: {
+              labels: questions,
+              datasets: [{
+                backgroundColor: "rgba(255,0,0,1)",
+                data: score_per_questions
+              }]
+            },
+            options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 0, max:9}}],
+              yAxes: [{ticks: {min: 0, max:1}}],
+              legend: {display: false},
+              title: {
+                display: true,
+                text: "Security Quiz"
+              
+              
+              }
+            
+          }
+          
+        }
+      });
+    });
+  });
+
+
+        </script>
+
+
+    <!--Progress Section-->
+    <h2>Progress</h2>
+
+    <!--Here is where the feedback will be placed for this section.-->
+    <p id="progress_feedback1"></p>
+   
+    <!--Button to trigger the querying of data and the creation of the chart-->
+    <button type="button" id="progress_button" name="progress_button">Get Data</button>
+
+   <!--This is where the chart will go-->
+    <canvas id="progress" style="width:100%;max-width:700px"></canvas>
+
+      <!--This is so the chart.js can be used. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script type="module">
+    
+    //Importing the information needed to link with the database
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      import {getFirestore, getDoc, query, collection, where, getDocs, doc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"
+
+        // Firebase configuration code. This comes from the firebase console. Not self-written.
+      //Credit to Firebase.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBL0_f9F41BimSsXBRqD2Glu-uB_fXK3ik",
+      authDomain: "cloud-a535b.firebaseapp.com",
+      projectId: "cloud-a535b",
+      storageBucket: "cloud-a535b.appspot.com",
+      messagingSenderId: "215864555524",
+      appId: "1:215864555524:web:17e7f8da83b01866ee5d51"
+    };
+
+    // Initialising the database to query the data.
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+    //Using local storage to get the user name. 
+    var user = localStorage.getItem("name")
+      
+    //https://www.youtube.com/watch?v=WnxyWOC2QvI
+ //Some of this code comes from this YouTube video. Credit to 'Info Tech WAR for Coding'
+ //Listens for the button to be pressed and then queries the data. 
+ //Here it will look for data where the user == user and the quiz results for quiz 1 and 9
+ //This is the starter and terminal quizzes. 
+      progress_button.addEventListener('click', (e) => {
+        const q = query(collection(db,"formData"), where("quiz", "==", 1), where ('user','==', user));
+        const a = query(collection(db,"formData"), where("quiz", "==", 9), where ('user','==', user));
+    
+  //This gets a snapshot of the query. Storing the result into a list. 
+ //Credit to 'Info Tech WAR for Coding' for guidance in this section.
+
+        getDocs (q).then(docSnap => {
+          let progress = [];
+          docSnap.forEach((doc) => {
+            progress.push({ ...doc.data(), id:doc.id})
+
+          });
+      
+      //Console log used for testing the query success
+      //Storing the results of the query into a variable.
+          console.log("Document Data:", progress);
+          var q1_score = progress[0]['result'] 
+
+        //This gets a snapshot of the query. Storing the result into a list. 
+        //Credit to 'Info Tech WAR for Coding' for guidance in this section.
+          getDocs (a).then(docSnap => {
+          let progress = [];
+          docSnap.forEach((doc) => {
+            progress.push({ ...doc.data(), id:doc.id})
+
+          });
+
+          //Console log used for testing the query success
+          //Storing the results of the query into a variable.
+          console.log("Document Data:", progress);
+          var q2_score = progress[0]['result'] 
+          
+      //These are the x and y axis data to be used in the chart
+      //First lot are the x axis values, quiz 1 and quiz 2
+      //Second are the queried scores from each of the quizzes
+          var quizes = ["Quiz 1", "Quiz 2"];
+          var score_per_questions = [q1_score, q2_score];
+
+      //Some IF statements are used to check how many points have been scored. 
+      //Questions have been subgrouped to provide feedback based on what the user has scored. 
+      //Feedback is then put onto the webpage using the getElementbyID function. 
+  
+          if (q1_score < q2_score) {
+          document.getElementById('progress_feedback1').innerHTML = "This shows that you have progressed from the first quiz to the ending quiz. It shows what you learnt through using this educational tool. ";
+          } else {
+            document.getElementById('progress_feedback1').innerHTML = "This shows that you scored higher in the first quiz compared to the last quiz. Ideally it should be the other way around.";
+
+          }
+
+      // Initial chart design come from https://www.w3schools.com/ai/ai_chartjs.asp
+      //Credit to W3Schools.
+      //Creates a chart to be places in the canvas above. Here a bar chart is used. 
+      //Some options have been added, like starting the chart at 0
+          new Chart("progress", {
+            type: "bar",
+            data: {
+              labels: quizes,
+              datasets: [{
+                backgroundColor: "rgba(255,0,0,1)",
+                data: score_per_questions
+              }]
+            },
+          
+            options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 0, max:9}}],
+              yAxes: [{ticks: {min: 0, max:9}}],
+              legend: {display: false},
+              title: {
+                display: true,
+                text: "Progress Quiz"
+              
+              
+              }
+            
+          }
+          
+        }
+      });
+    });
+  });
+});
+
+
+        </script>
+
+    </div>
+
+  </body>
+</html>

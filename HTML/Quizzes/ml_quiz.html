@@ -1,0 +1,97 @@
+<!--Setup of the quiz. It includes the general setup of the quiz. It features a link to an online 
+stylesheet that is used on all quizzes to provide a consistent house style.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Machine Learning Quiz</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+
+</style>
+
+</head>
+
+<!--This code uses javascript to set the local storage of the quiz number. This is then used in the database and retrieval to 
+know which quiz has been completed. It sets the value of the quiz depending of the quiz number. -->
+<body onload = "getquiz()">
+<script>
+	function getquiz(){
+		localStorage.setItem('quiz', 6);
+	}
+</script>
+
+
+
+<!--Here are the questions to the quiz and the given and correct answers. -->
+<h1>Machine Learning Quiz</h1>
+<form id="questions">
+
+<h2>What is machine learning?</h2>
+<input type="radio" name="q1" value="0" id="q1_a1">A type of programming language <br>
+<input type="radio" name="q1" value="1" id="q1_a2" />A technique for training models to make predictions based on data<br>
+<input type="radio" name="q1" value="0" id="q1_a3" />A software tool for creating graphical user interfaces<br>
+<input type="radio" name="q1" value="0" id="q1_a4"/>A type of database management system<br>
+
+<h2>Which of the following is NOT a type of machine learning?</h2>
+<input type="radio" name="q2" value="0" id="q2_a1"/>Supervised learning<br>
+<input type="radio" name="q2" value="0" id="q2_a2"/>Supervised learning<br>
+<input type="radio" name="q2" value="0" id="q2_a3" />Reinforcement learning<br>
+<input type="radio" name="q2" value="1" id="q2_a4" />Holistic learning<br>
+
+<h2>How is reinforcement learning used in retail and e-commerce</h2>
+<input type="radio" name="q3" value="0" id="q3_a1"/>Personalisation<br>
+<input type="radio" name="q3" value="0" id="q3_a2"/>Chatbots<br>
+<input type="radio" name="q3" value="0" id="q3_a3" />Recommendations<br>
+<input type="radio" name="q3" value="1" id="q3_a4" />All of the above<br>
+
+<h2>How is reinforcement learning used in manufacturing and engineering</h2>
+<input type="radio" name="q4" value="0" id="q4_a1"/>Robotics<br>
+<input type="radio" name="q4" value="0" id="q4_a2"/>Quality Control<br>
+<input type="radio" name="q4" value="0" id="q4_a3" />Modelling real-world environments<br>
+<input type="radio" name="q4" value="1" id="q4_a4" />All of the above<br>
+
+
+<h2>Can machine learning be used in fraud detections?</h2>
+<input type="radio" name="q5" value="1" id="q5_a1"/>Yes<br>
+<input type="radio" name="q5" value="0" id="q5_a2"/>No<br>
+
+<h2>Which of the following is being used by social media site through using machine learning</h2>
+<input type="radio" name="q6" value="1" id="q6_a1"/>Personalising content<br>
+<input type="radio" name="q6" value="0" id="q6_a2"/>Making videos<br>
+<input type="radio" name="q6" value="0" id="q6_a3" />Adding more friends<br>
+<input type="radio" name="q6" value="0" id="q6_a4" />All of the above<br>
+
+<h2>Which of the following is NOT a machine learning method being used in the creative industry</h2>
+<input type="radio" name="q7" value="1" id="q7_a1"/>Deepfake Videos<br>
+<input type="radio" name="q7" value="0" id="q7_a2"/>Image Creation<br>
+<input type="radio" name="q7" value="0" id="q7_a3" />Game play<br>
+<input type="radio" name="q7" value="0" id="q7_a4" />Live Acting<br>
+
+<h2>Machine learning is used across many different industries?</h2>
+<input type="radio" name="q8" value="1" id="q8_a1"/>Yes<br>
+<input type="radio" name="q8" value="0" id="q8_a2"/>No<br>
+
+
+<button type="submit" value="Submit" id="submit">Submit</button>
+
+</form>
+
+<!--This will show the grade and feedback of the quiz. This is done in the app.js file
+Help for this section cam from https://codeactually.com/interactivequiz.html
+Credit to Code Actually-->
+<p>Your grade is: <span id="grade">__</span></p>
+<p id ="feedback"> </p>
+
+
+<!--This is the javascript link the the firestore database, to save the outcome of the quiz and a link to the app.js file that 
+stores the code needed to save the quiz data to the firestore database. -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src ="app.js"></script> 
+
+<!--Navigation to the homescreen. -->
+<h4> <a href="../website.html">Return Home</a></h4>
+
+</div>
+</body>
+</html>
